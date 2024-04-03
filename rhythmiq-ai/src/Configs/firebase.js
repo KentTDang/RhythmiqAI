@@ -16,4 +16,5 @@ const app = firebase.initializeApp({
 
 // Initialize Firebase
 const analytics = getAnalytics(app);
+export const auth = app.auth();
 export const firestore = getFirestore(app);
