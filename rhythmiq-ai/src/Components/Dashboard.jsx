@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { firestore } from '../Configs/firebase'
-import { addDoc, collection, onSnapshot } from 'firebase/firestore'
+import { addDoc, collection, onSnapshot, updateDoc, doc } from 'firebase/firestore'
 import "./Dashboard.css"
 
 export default function Dashboard() {
@@ -58,6 +58,19 @@ export default function Dashboard() {
     }
   }
 
+  /**  Update Function Firebase **/
+  const upVoteSongReview = async (id, rating) => {
+    const songReviewDoc = doc(firestore, "song-reviews", id);
+    const newFields = {rating: rating + 1}
+    await updateDoc(songReviewDoc ,newFields)
+  }
+
+  const downVoteSongReview = async (id, rating) => {
+    const songReviewDoc = doc(firestore, "song-reviews", id);
+    const newFields = {rating: rating - 1}
+    await updateDoc(songReviewDoc ,newFields)
+  }
+
   return (
     <>
    <div className='song-review'>
@@ -89,6 +102,8 @@ export default function Dashboard() {
             {songs.album} 
             {songs.artist} 
             {songs.rating}</p>
+            <button onClick={() => {upVoteSongReview(songs.id, songs.rating)}}>UpVote</button>
+            <button onClick={() => {downVoteSongReview(songs.id, songs.rating)}}>DownVote</button>
           </div>
         ))
       )}
