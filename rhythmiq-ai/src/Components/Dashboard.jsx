@@ -92,12 +92,13 @@ export default function Dashboard() {
         <button type="submit">Save</button>
       </form>
    </div>
+   <div className="content-container">
    <div className="song-review-container">
       {loading ? (
       <h1>Loading...</h1>
       ) : (
         songReviews.map((songs) => (
-          <div key={songs.id}>
+          <div className="review" key={songs.id}>
             <p>{songs.song} 
             {songs.album} 
             {songs.artist} 
@@ -108,6 +109,8 @@ export default function Dashboard() {
         ))
       )}
    </div>
+   </div>
+   
    </>
   )
 }
