@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { firestore } from '../Configs/firebase'
+import { firestore } from '../../Configs/firebase'
 import { addDoc, collection, onSnapshot, updateDoc, deleteDoc, doc } from 'firebase/firestore'
 import "./Dashboard.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
