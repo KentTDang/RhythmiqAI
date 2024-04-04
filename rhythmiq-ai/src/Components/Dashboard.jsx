@@ -3,7 +3,7 @@ import { firestore } from '../Configs/firebase'
 import { addDoc, collection, onSnapshot, updateDoc, deleteDoc, doc } from 'firebase/firestore'
 import "./Dashboard.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { 
+import {
   faArrowUp,
   faArrowDown,
   faTrash
@@ -106,7 +106,7 @@ export default function Dashboard() {
           <label>Rating</label>
           <input type="text" ref={ratingRef} pattern="[0-9]+(\.[0-9]+)?" required />
           <br />
-          <button type="submit">Save</button >
+          <button className="button-main" type="submit">Save</button >
         </form>
       </div>
       <div className="content-container">
@@ -120,10 +120,15 @@ export default function Dashboard() {
                   {songs.album}
                   {songs.artist}
                   {songs.review}
-                  {songs.rating}</p>
-                <button onClick={() => { upVoteSongReview(songs.id, songs.rating) }}><FontAwesomeIcon icon={faArrowUp} /></button>
-                <button onClick={() => { downVoteSongReview(songs.id, songs.rating) }}><FontAwesomeIcon icon={faArrowDown} /></button>
-                <button onClick={() => { deleteSongReview(songs.id) }}><FontAwesomeIcon icon={faTrash} /></button>
+                </p>
+                <div className="utility">
+                <div className="vote-container">
+                  <button className="vote-button" onClick={() => { upVoteSongReview(songs.id, songs.rating) }}><FontAwesomeIcon icon={faArrowUp} /></button>
+                  {songs.rating}
+                  <button className="vote-button" onClick={() => { downVoteSongReview(songs.id, songs.rating) }}><FontAwesomeIcon icon={faArrowDown} /></button>
+                </div>
+                <button className="trash-button" onClick={() => { deleteSongReview(songs.id) }}><FontAwesomeIcon icon={faTrash} /></button>
+                </div>
               </div>
             ))
           )}
