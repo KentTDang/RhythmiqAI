@@ -2,6 +2,12 @@ import React, { useState, useRef, useEffect } from 'react'
 import { firestore } from '../Configs/firebase'
 import { addDoc, collection, onSnapshot, updateDoc, deleteDoc, doc } from 'firebase/firestore'
 import "./Dashboard.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { 
+  faArrowUp,
+  faArrowDown,
+  faTrash
+} from '@fortawesome/free-solid-svg-icons'
 
 export default function Dashboard() {
 
@@ -22,16 +28,16 @@ export default function Dashboard() {
     setLoading(true);
 
     const unsub = onSnapshot(collectionRef, (querySnapshot) => {
-      const data =[];
+      const data = [];
       querySnapshot.forEach((doc) => {
-        data.push({id: doc.id, ...doc.data()});
+        data.push({ id: doc.id, ...doc.data() });
       });
 
-      try{
+      try {
         setLoading(true);
         setSongReviews(data);
         setLoading(false);
-      }catch(error) {
+      } catch (error) {
         setError("Failed to fetch data from Firestore.");
         setLoading(false);
       }
@@ -41,8 +47,8 @@ export default function Dashboard() {
     };
   }, []);
 
-  /** Create Function Firebase **/ 
-  const handleSave = async(e) => {
+  /** Create Function Firebase **/
+  const handleSave = async (e) => {
     e.preventDefault(); // Prevent refresh on action
 
     let data = {
@@ -53,9 +59,9 @@ export default function Dashboard() {
       rating: parseFloat(ratingRef.current.value)
     }
 
-    try{
+    try {
       addDoc(collectionRef, data);
-    } catch(error) {
+    } catch (error) {
       console.log("Error : ", error);
     }
   }
@@ -63,14 +69,14 @@ export default function Dashboard() {
   /**  Update Function Firebase **/
   const upVoteSongReview = async (id, rating) => {
     const songReviewDoc = doc(firestore, "song-reviews", id);
-    const newFields = {rating: rating + 1}
-    await updateDoc(songReviewDoc ,newFields)
+    const newFields = { rating: rating + 1 }
+    await updateDoc(songReviewDoc, newFields)
   }
 
   const downVoteSongReview = async (id, rating) => {
     const songReviewDoc = doc(firestore, "song-reviews", id);
-    const newFields = {rating: rating - 1}
-    await updateDoc(songReviewDoc ,newFields)
+    const newFields = { rating: rating - 1 }
+    await updateDoc(songReviewDoc, newFields)
   }
 
   /** Delete Function Firebase **/
@@ -81,49 +87,49 @@ export default function Dashboard() {
 
   return (
     <>
-   <div className='song-review'>
-      <form onSubmit={handleSave}>
-        <label>Song Review</label>
-        <br/>
-        <label>Song Name</label>
-        <input type="text" ref={songRef}/>
-        <br/>
-        <label>Album</label>
-        <input type="text" ref={albumRef}/>
-        <br/>
-        <label>Artist</label>
-        <input type="text" ref={artistRef}/>
-        <br/>
-        <label>Review</label>
-        <input type="text" ref={reviewRef}/>
-        <br/>
-        <label>Rating</label>
-        <input type="text" ref={ratingRef} pattern="[0-9]+(\.[0-9]+)?" required/>
-        <br/>
-        <button type="submit">Save</button >
-      </form>
-   </div>
-   <div className="content-container">
-   <div className="song-review-container">
-      {loading ? (
-      <h1>Loading...</h1>
-      ) : (
-        songReviews.map((songs) => (
-          <div className="review" key={songs.id}>
-            <p>{songs.song} 
-            {songs.album} 
-            {songs.artist}
-            {songs.review} 
-            {songs.rating}</p>
-            <button onClick={() => {upVoteSongReview(songs.id, songs.rating)}}>UpVote</button>
-            <button onClick={() => {downVoteSongReview(songs.id, songs.rating)}}>DownVote</button>
-            <button onClick={() => {deleteSongReview(songs.id)}}>Delete</button>
-          </div>
-        ))
-      )}
-   </div>
-   </div>
-   
-   </>
+      <div className='song-review'>
+        <form onSubmit={handleSave}>
+          <label>Song Review</label>
+          <br />
+          <label>Song Name</label>
+          <input type="text" ref={songRef} />
+          <br />
+          <label>Album</label>
+          <input type="text" ref={albumRef} />
+          <br />
+          <label>Artist</label>
+          <input type="text" ref={artistRef} />
+          <br />
+          <label>Review</label>
+          <input type="text" ref={reviewRef} />
+          <br />
+          <label>Rating</label>
+          <input type="text" ref={ratingRef} pattern="[0-9]+(\.[0-9]+)?" required />
+          <br />
+          <button type="submit">Save</button >
+        </form>
+      </div>
+      <div className="content-container">
+        <div className="song-review-container">
+          {loading ? (
+            <h1>Loading...</h1>
+          ) : (
+            songReviews.map((songs) => (
+              <div className="review" key={songs.id}>
+                <p>{songs.song}
+                  {songs.album}
+                  {songs.artist}
+                  {songs.review}
+                  {songs.rating}</p>
+                <button onClick={() => { upVoteSongReview(songs.id, songs.rating) }}><FontAwesomeIcon icon={faArrowUp} /></button>
+                <button onClick={() => { downVoteSongReview(songs.id, songs.rating) }}><FontAwesomeIcon icon={faArrowDown} /></button>
+                <button onClick={() => { deleteSongReview(songs.id) }}><FontAwesomeIcon icon={faTrash} /></button>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+
+    </>
   )
 }
