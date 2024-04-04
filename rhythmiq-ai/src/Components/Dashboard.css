@@ -40,8 +40,6 @@ input {
     border-top-right-radius: 12px;
     width: 50em;
     background-color: rgb(24, 26, 28);
-
-
 }
 
 .review {
@@ -78,4 +76,12 @@ input {
 .utility {
     display: flex;
     padding: 6px;
+}
+
+input[type=radio] {
+    display: none;
+}
+
+.star {
+    cursor: pointer;
 }

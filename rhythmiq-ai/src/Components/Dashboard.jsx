@@ -6,7 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faArrowUp,
   faArrowDown,
-  faTrash
+  faTrash,
+  faStar
 } from '@fortawesome/free-solid-svg-icons'
 
 export default function Dashboard() {
@@ -21,7 +22,10 @@ export default function Dashboard() {
   const albumRef = useRef();
   const artistRef = useRef();
   const reviewRef = useRef();
+  const voteRef = useRef();
   const ratingRef = useRef();
+  const [rating, setRating] = useState(null);
+  const [hover, setHover] = useState(null);
 
   /**  Display Function Firebase **/
   useEffect(() => {
@@ -56,7 +60,9 @@ export default function Dashboard() {
       album: albumRef.current.value,
       artist: artistRef.current.value,
       review: reviewRef.current.value,
-      rating: parseFloat(ratingRef.current.value)
+      votes: 0,
+      rating: ratingRef.current.value
+      // rating: parseFloat(ratingRef.current.value)
     }
 
     try {
@@ -67,15 +73,15 @@ export default function Dashboard() {
   }
 
   /**  Update Function Firebase **/
-  const upVoteSongReview = async (id, rating) => {
+  const upVoteSongReview = async (id, votes) => {
     const songReviewDoc = doc(firestore, "song-reviews", id);
-    const newFields = { rating: rating + 1 }
+    const newFields = { votes: votes + 1 }
     await updateDoc(songReviewDoc, newFields)
   }
 
-  const downVoteSongReview = async (id, rating) => {
+  const downVoteSongReview = async (id, votes) => {
     const songReviewDoc = doc(firestore, "song-reviews", id);
-    const newFields = { rating: rating - 1 }
+    const newFields = { votes: votes - 1 }
     await updateDoc(songReviewDoc, newFields)
   }
 
@@ -103,12 +109,39 @@ export default function Dashboard() {
           <label>Review</label>
           <input type="text" ref={reviewRef} />
           <br />
-          <label>Rating</label>
+          {/* <label>Rating</label>
           <input type="text" ref={ratingRef} pattern="[0-9]+(\.[0-9]+)?" required />
-          <br />
+          <br /> */}
+          {[...Array(5)].map((star, index) => {
+            const currentRating = index + 1;
+            return (
+              <label>
+                <input
+                  type="radio"
+                  name="rating"
+                  value={currentRating}
+                  onClick={() => setRating(currentRating)}
+                  ref={ratingRef}
+                />
+                <FontAwesomeIcon className="start" icon={faStar}
+                  color={currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
+                  onMouseEnter={() => setHover(currentRating)}
+                  onMouseLeave={() => setHover(null)}
+                />
+              </label>
+            );
+          })}
           <button className="button-main" type="submit">Save</button >
         </form>
+
+
+
+
       </div>
+
+
+
+
       <div className="content-container">
         <div className="song-review-container">
           {loading ? (
@@ -120,14 +153,27 @@ export default function Dashboard() {
                   {songs.album}
                   {songs.artist}
                   {songs.review}
+
+                  {[...Array(5)].map((star, index) => {
+                    const currentRating = songs.rating;
+                    return (
+                      <label>
+                        <FontAwesomeIcon className="start" icon={faStar}
+                          color={currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
+                          // onMouseEnter={() => setHover(currentRating)}
+                          // onMouseLeave={() => setHover(null)}
+                        />
+                      </label>
+                    );
+                  })}
                 </p>
                 <div className="utility">
-                <div className="vote-container">
-                  <button className="vote-button" onClick={() => { upVoteSongReview(songs.id, songs.rating) }}><FontAwesomeIcon icon={faArrowUp} /></button>
-                  {songs.rating}
-                  <button className="vote-button" onClick={() => { downVoteSongReview(songs.id, songs.rating) }}><FontAwesomeIcon icon={faArrowDown} /></button>
-                </div>
-                <button className="trash-button" onClick={() => { deleteSongReview(songs.id) }}><FontAwesomeIcon icon={faTrash} /></button>
+                  <div className="vote-container">
+                    <button className="vote-button" onClick={() => { upVoteSongReview(songs.id, songs.votes) }}><FontAwesomeIcon icon={faArrowUp} /></button>
+                    {songs.votes}
+                    <button className="vote-button" onClick={() => { downVoteSongReview(songs.id, songs.votes) }}><FontAwesomeIcon icon={faArrowDown} /></button>
+                  </div>
+                  <button className="trash-button" onClick={() => { deleteSongReview(songs.id) }}><FontAwesomeIcon icon={faTrash} /></button>
                 </div>
               </div>
             ))
