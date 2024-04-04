@@ -1,2 +1,17 @@
-.song-review {
+.content-container {
+    display: grid; 
+    align-items: center;
+    justify-content: center;
+}
+
+.song-review-container {
+    border-top-left-radius:12px ;
+    border-top-right-radius:12px ;
+    width: 50em;
+    background-color: rgb(228, 230, 234);
+
+
+}
+.review {
+    border-bottom: 0.5px solid white;
 }
