@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { firestore } from '../Configs/firebase'
-import { addDoc, collection, onSnapshot, updateDoc, doc } from 'firebase/firestore'
+import { addDoc, collection, onSnapshot, updateDoc, deleteDoc, doc } from 'firebase/firestore'
 import "./Dashboard.css"
 
 export default function Dashboard() {
@@ -71,6 +71,12 @@ export default function Dashboard() {
     await updateDoc(songReviewDoc ,newFields)
   }
 
+  /** Delete Function Firebase **/
+  const deleteSongReview = async (id) => {
+    const songReviewDoc = doc(firestore, "song-reviews", id);
+    await deleteDoc(songReviewDoc);
+  }
+
   return (
     <>
    <div className='song-review'>
@@ -105,6 +111,7 @@ export default function Dashboard() {
             {songs.rating}</p>
             <button onClick={() => {upVoteSongReview(songs.id, songs.rating)}}>UpVote</button>
             <button onClick={() => {downVoteSongReview(songs.id, songs.rating)}}>DownVote</button>
+            <button onClick={() => {deleteSongReview(songs.id)}}>Delete</button>
           </div>
         ))
       )}
