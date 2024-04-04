@@ -14,6 +14,7 @@ export default function Dashboard() {
   const songRef = useRef();
   const albumRef = useRef();
   const artistRef = useRef();
+  const reviewRef = useRef();
   const ratingRef = useRef();
 
   /**  Display Function Firebase **/
@@ -48,7 +49,8 @@ export default function Dashboard() {
       song: songRef.current.value,
       album: albumRef.current.value,
       artist: artistRef.current.value,
-      rating: ratingRef.current.value,
+      review: reviewRef.current.value,
+      rating: parseFloat(ratingRef.current.value)
     }
 
     try{
@@ -92,10 +94,13 @@ export default function Dashboard() {
         <label>Artist</label>
         <input type="text" ref={artistRef}/>
         <br/>
-        <label>Rating</label>
-        <input type="text" ref={ratingRef}/>
+        <label>Review</label>
+        <input type="text" ref={reviewRef}/>
         <br/>
-        <button type="submit">Save</button>
+        <label>Rating</label>
+        <input type="text" ref={ratingRef} pattern="[0-9]+(\.[0-9]+)?" required/>
+        <br/>
+        <button type="submit">Save</button >
       </form>
    </div>
    <div className="content-container">
@@ -107,7 +112,8 @@ export default function Dashboard() {
           <div className="review" key={songs.id}>
             <p>{songs.song} 
             {songs.album} 
-            {songs.artist} 
+            {songs.artist}
+            {songs.review} 
             {songs.rating}</p>
             <button onClick={() => {upVoteSongReview(songs.id, songs.rating)}}>UpVote</button>
             <button onClick={() => {downVoteSongReview(songs.id, songs.rating)}}>DownVote</button>
