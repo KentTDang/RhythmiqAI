@@ -61,7 +61,7 @@ export default function Dashboard() {
       artist: artistRef.current.value,
       review: reviewRef.current.value,
       votes: 0,
-      rating: ratingRef.current.value
+      rating: rating
       // rating: parseFloat(ratingRef.current.value)
     }
 
@@ -109,21 +109,20 @@ export default function Dashboard() {
           <label>Review</label>
           <input type="text" ref={reviewRef} />
           <br />
-          {/* <label>Rating</label>
-          <input type="text" ref={ratingRef} pattern="[0-9]+(\.[0-9]+)?" required />
-          <br /> */}
-          {[...Array(5)].map((star, index) => {
+          {[...Array(5)].map((_, index) => {
             const currentRating = index + 1;
             return (
-              <label>
+              <label key={index}>
                 <input
                   type="radio"
                   name="rating"
                   value={currentRating}
                   onClick={() => setRating(currentRating)}
-                  ref={ratingRef}
+                  checked={currentRating === rating} // Set checked based on current rating
                 />
-                <FontAwesomeIcon className="start" icon={faStar}
+                <FontAwesomeIcon
+                  className="star"
+                  icon={faStar}
                   color={currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
                   onMouseEnter={() => setHover(currentRating)}
                   onMouseLeave={() => setHover(null)}
@@ -133,14 +132,7 @@ export default function Dashboard() {
           })}
           <button className="button-main" type="submit">Save</button >
         </form>
-
-
-
-
       </div>
-
-
-
 
       <div className="content-container">
         <div className="song-review-container">
@@ -149,21 +141,16 @@ export default function Dashboard() {
           ) : (
             songReviews.map((songs) => (
               <div className="review" key={songs.id}>
-                <p>{songs.song}
-                  {songs.album}
-                  {songs.artist}
-                  {songs.review}
-
-                  {[...Array(5)].map((star, index) => {
-                    const currentRating = songs.rating;
+                <p>{songs.song} - {songs.album} - {songs.artist} - {songs.review}
+                {[...Array(5)].map((_, index) => {
+                    const currentRating = index + 1;
                     return (
-                      <label>
-                        <FontAwesomeIcon className="start" icon={faStar}
-                          color={currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
-                          // onMouseEnter={() => setHover(currentRating)}
-                          // onMouseLeave={() => setHover(null)}
-                        />
-                      </label>
+                      <FontAwesomeIcon
+                        key={index}
+                        className="star"
+                        icon={faStar}
+                        color={currentRating <= songs.rating ? "#ffc107" : "#e4e5e9"}
+                      />
                     );
                   })}
                 </p>
