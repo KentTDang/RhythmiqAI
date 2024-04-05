@@ -43,6 +43,14 @@ input {
     }
 }
 
+.popup-content {
+    height: 100px;
+}
+
+/* .song-review {
+    height: 100px;
+} */
+
 .button-main {
     font-size: 17px;
     padding: 0.5em 2em;
