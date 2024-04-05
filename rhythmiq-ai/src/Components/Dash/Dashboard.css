@@ -44,12 +44,29 @@ input {
 }
 
 .popup-content {
-    height: 100px;
+    background-color: rgb(24, 26, 28) !important;
+    height: 250px;
+    border: none !important;
+    border-radius: 12px;
 }
 
-/* .song-review {
-    height: 100px;
-} */
+.song-review {
+    padding: 3px 6px 3px 6px;
+    span {
+        font-size: 28px;
+        font-weight: 500;
+    }
+    label {
+        font-size: 18px;
+        margin-right: 6px;
+    }
+}
+
+.review-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 .button-main {
     font-size: 17px;

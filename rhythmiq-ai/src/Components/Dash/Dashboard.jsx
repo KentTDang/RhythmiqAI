@@ -153,10 +153,13 @@ export default function Dashboard() {
           modal nested>
           {
             close => (
+              
               <div className='song-review'>
+                <div className="review-top">
+                <span>Song Review</span>
+                <button button onClick={() => close()}>CLOSE</button>
+                </div>
                 <form onSubmit={handleSave}>
-                  <label>Song Review</label>
-                  <br />
                   <label>Song Name</label>
                   <input type="text" ref={songRef} />
                   <br />
@@ -190,9 +193,10 @@ export default function Dashboard() {
                       </label>
                     );
                   })}
+                  <br/>
                   <button className="button-main" type="submit">Save</button >
                 </form>
-                <button button onClick={() => close()}>CLOSE</button>
+                
               </div>
             )
           }
