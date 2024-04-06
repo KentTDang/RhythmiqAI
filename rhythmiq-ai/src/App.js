@@ -1,6 +1,6 @@
 import './App.css';
 import { NavBar } from "./Components/NavBar.js";
-// import { Banner } from "./Components/Banner.js";
+import { Banner } from "./Components/Banner.js";
 // import { Skills } from "./components/Skills";
 // import { Projects } from "./components/Projects";
 // import { Contact } from "./components/Contact";
@@ -16,7 +16,7 @@ function App() {
 
     <div className="App">
       <NavBar/>
-      {/* <Banner/> */}
+      <Banner/>
     </div>
 
     // <div>
