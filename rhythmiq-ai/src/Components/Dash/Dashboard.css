@@ -15,7 +15,7 @@ input {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 60vh;
+    height: 73.5vh;
     background: linear-gradient(180deg, black, rgba(0, 0, 0, 1), rgba(0, 0, 0, .9), rgba(0, 0, 0, .8), rgba(0, 0, 0, .7), rgba(0, 0, 0, .6),
             rgba(0, 0, 0, .5), rgba(0, 0, 0, .4), rgba(0, 0, 0, .3), rgba(0, 0, 0, .2), rgba(0, 0, 0, .1), var(--black-color));
 
@@ -103,6 +103,7 @@ input {
 
 .review {
     border-bottom: 0.5px solid rgb(36, 37, 39);
+    padding: 12px;
 }
 
 .vote-container {
@@ -134,7 +135,7 @@ input {
 
 .utility {
     display: flex;
-    padding: 6px;
+    /* padding: 6px; */
 }
 
 input[type=radio] {
