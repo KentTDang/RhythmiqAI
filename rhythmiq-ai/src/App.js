@@ -1,17 +1,24 @@
 import './App.css';
-import Dashboard from './Components/Dash/Dashboard.jsx'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { NavBar } from './Components/Dash/NavBar.js';
+
+// import Dashboard from './Components/Dash/Dashboard.jsx'
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Dashboard/>}/>
-        </Routes>
-      </BrowserRouter>
+
+    <div className="App">
+      <NavBar/>
     </div>
+
+    // <div>
+    //   <BrowserRouter>
+    //     <Routes>
+    //       <Route path="/" element={<Dashboard/>}/>
+    //     </Routes>
+    //   </BrowserRouter>
+    // </div>
   );
 }
 

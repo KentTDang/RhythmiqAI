@@ -3,7 +3,7 @@ import { firestore } from '../../Configs/firebase'
 import { addDoc, collection, onSnapshot, updateDoc, deleteDoc, doc } from 'firebase/firestore'
 import "./Dashboard.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import bg from '../../Assets/bg.webp'
+import bg from '../../Assets/img/bg.webp'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import {

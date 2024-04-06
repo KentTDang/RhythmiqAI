@@ -1,0 +1,134 @@
+/** Custom Fonts **/
+/* @font-face {
+    font-family: Centra;
+    src: url('./Assets/');
+} */
+
+/** Default CSS**/
+* {
+    margin: 0;
+    top: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 75px;
+}
+
+body {
+    font-weight: 400;
+    overflow-x: hidden;
+    position: relative;
+    background-color: #121212 !important;
+    color: #fff !important;
+    font-family: 'Poppin', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6  {
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+}
+
+p, a, li, button, ul {
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: none;
+  }
+  
+  img {
+    width: 100%;
+    height: auto;
+  }
+  
+  button {
+    border: 0;
+    background-color: transparent;
+  }
+  
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+  }
+  
+  @media (min-width:1700px) {
+      main .container {
+          max-width: 100%;
+          padding: 0 150px;
+      }
+  }
+  
+  p.success {
+      color: green;
+  }
+  
+  p.danger {
+      color: red;
+  }
+  /************ Navbar Css ************/
+  nav.navbar {
+    padding: 18px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 9999;
+    transition:  0.32s ease-in-out;
+  }
+  nav.navbar.scrolled {
+    padding: 0px 0;
+    background-color: #121212;
+  }
+  nav.navbar a.navbar-brand {
+      width: 9%;
+  }
+  nav.navbar .navbar-nav .nav-link.navbar-link {
+    font-weight: 400;
+    color: #fff !important;
+    letter-spacing: 0.8px;
+    padding: 0 25px;
+    font-size: 18px;
+    opacity: 0.75;
+  }
+  nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
+  nav.navbar .navbar-nav a.nav-link.navbar-link.active {
+      opacity: 1;
+  }
+  span.navbar-text {
+      display: flex;
+      align-items: center;
+  }
+
+.App {
+    text-align: center;
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+.App-header { 
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.App-link {
+    color: #61dafb;
+}
