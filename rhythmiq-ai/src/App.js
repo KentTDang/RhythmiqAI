@@ -1,15 +1,13 @@
 import './App.css';
 import { NavBar } from "./Components/NavBar.js";
 import { Banner } from "./Components/Banner.js";
-// import { Skills } from "./components/Skills";
-// import { Projects } from "./components/Projects";
-// import { Contact } from "./components/Contact";
-// import { Footer } from "./components/Footer";
+import { Skills } from "./Components/Skills.js";
+import Dashboard from './Components/Dash/Dashboard.jsx'
+
+// import { Projects } from "./Components/Projects";
+// import { Contact } from "./Components/Contact";
+// import { Footer } from "./Components/Footer";
 import 'bootstrap/dist/css/bootstrap.min.css'
-
-// import Dashboard from './Components/Dash/Dashboard.jsx'
-// import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
 
 function App() {
   return (
@@ -17,15 +15,9 @@ function App() {
     <div className="App">
       <NavBar/>
       <Banner/>
+      <Skills/>
+      {/* <Dashboard/> */}
     </div>
-
-    // <div>
-    //   <BrowserRouter>
-    //     <Routes>
-    //       <Route path="/" element={<Dashboard/>}/>
-    //     </Routes>
-    //   </BrowserRouter>
-    // </div>
   );
 }
 
