@@ -1,5 +1,10 @@
 import './App.css';
-import { NavBar } from './Components/Dash/NavBar.js';
+import { NavBar } from "./Components/NavBar.js";
+// import { Banner } from "./Components/Banner.js";
+// import { Skills } from "./components/Skills";
+// import { Projects } from "./components/Projects";
+// import { Contact } from "./components/Contact";
+// import { Footer } from "./components/Footer";
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 // import Dashboard from './Components/Dash/Dashboard.jsx'
@@ -11,6 +16,7 @@ function App() {
 
     <div className="App">
       <NavBar/>
+      {/* <Banner/> */}
     </div>
 
     // <div>
