@@ -8,7 +8,7 @@ import headerImg from './../Assets/img/header-img.svg'
 
 import { Row, Container, Col } from 'react-bootstrap'
 
-export const Skills = () => {
+export const Song = () => {
 
   const responsive = {
     superLargeDesktop: {
@@ -31,12 +31,12 @@ export const Skills = () => {
   };
 
   return (
-    <section className='skill' id='skills'>
+    <section className='song' id='songs'>
       
       <Container>
         <Row>
           <Col>
-            <div className="skill-bx">
+            <div className="song-bx">
               <h2>
                 Trending Songs
               </h2>
