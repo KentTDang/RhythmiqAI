@@ -67,19 +67,9 @@ export default function ReviewTable() {
     }
   };
 
-  // Keep your update and delete functions as they are
-
   async function queryCollection(searchArtist) {
     setFilter(searchArtist);
   }
-
-  // Return statement with updated controlled components
-  // You will need to update the input elements in the Popup to use the new state variables
-  // and set their onChange handlers accordingly.
-
-
-
-
 
   /**  Update Function Firebase **/
   const upVoteSongReview = async (id, votes) => {
