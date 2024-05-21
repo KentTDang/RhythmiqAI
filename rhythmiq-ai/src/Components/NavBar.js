@@ -45,7 +45,7 @@ export const NavBar = () => {
               <Nav.Link href="#reviews" className={activeLink === 'reviews' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('reviews')}>Reviews</Nav.Link>
             </Nav>
             <span className="navbar-text">
-                <button className="vvd"><span>Let’s Connect</span></button>
+                <button className="vvd"><span>Login</span></button>
             </span>
           </Navbar.Collapse>
         </Container>
