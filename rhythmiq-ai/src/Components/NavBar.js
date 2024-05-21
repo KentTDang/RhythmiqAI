@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
+import {handleLogin} from '../spotify-components/Spotify.jsx'
+
+
 
 import {
   BrowserRouter as Router
@@ -45,7 +48,7 @@ export const NavBar = () => {
               <Nav.Link href="#reviews" className={activeLink === 'reviews' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('reviews')}>Reviews</Nav.Link>
             </Nav>
             <span className="navbar-text">
-                <button className="vvd"><span>Login</span></button>
+                <button className="vvd" onClick={handleLogin}><span>Login</span></button>
             </span>
           </Navbar.Collapse>
         </Container>
