@@ -386,6 +386,10 @@
   }
   
   /** Carousel **/
+
+  .swiper {
+    z-index: 0 !important;
+  }
   
   .swiper-wrapper {
     width: 25% !important;
