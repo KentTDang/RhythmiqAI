@@ -16,7 +16,8 @@ import {
   faArrowDown,
   faTrash,
   faStar,
-  faPlus,
+  faMagnifyingGlass,
+  faDisplay,
 } from "@fortawesome/free-solid-svg-icons";
 import "animate.css";
 import ReviewForm from "./ReviewForm";
@@ -84,25 +85,30 @@ export default function ReviewTable() {
   return (
     <>
       <section className="review" id="reviews">
-        <ReviewForm />
-        <div className="d-flex align-items-center justify-content-center">
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              queryCollection(artist);
-            }}
-          >
-            <div className="review-search-bar">
-              <input
-                type="text"
-                value={artist}
-                onChange={(e) => setArtist(e.target.value)}
-                placeholder="Search by Artist..."
-                // id="songSearch"
-              />
-              <button type="submit"></button>
+        <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+          <div className="review-tool-bar">
+            <h2 className="review-header">Reviews</h2>
+            <div className="review-tool-bar-actions">
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  queryCollection(artist);
+                }}
+              >
+                <div className="review-search-bar">
+                  <FontAwesomeIcon icon={faMagnifyingGlass} />
+                  <input
+                    type="text"
+                    value={artist}
+                    onChange={(e) => setArtist(e.target.value)}
+                    placeholder="Search by Artist..."
+                  />
+                  <button type="submit"></button>
+                </div>
+              </form>
+              <ReviewForm />
             </div>
-          </form>
+          </div>
         </div>
 
         <div className="d-flex align-items-center justify-content-center">
