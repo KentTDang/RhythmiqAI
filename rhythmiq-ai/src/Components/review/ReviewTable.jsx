@@ -108,7 +108,7 @@ export default function ReviewTable() {
                         <Nav.Link eventKey="second">Display</Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
-                        <Nav.Link eventKey="third">Add</Nav.Link>
+                        <Nav.Link eventKey="third"><FontAwesomeIcon icon={faPlus} /></Nav.Link>
                       </Nav.Item>
                     </Nav>
                     <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
