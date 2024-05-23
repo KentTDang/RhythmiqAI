@@ -44,8 +44,14 @@ export const NavBar = () => {
     <Router>
       <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
         <Container>
-          <Navbar.Brand href="/">
-            {/* Search bar goes here */}
+          <Navbar.Brand>
+            <div> 
+            <input id="searchbar">
+
+            </input>
+            
+
+            </div>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav">
             <span className="navbar-toggler-icon"></span>
