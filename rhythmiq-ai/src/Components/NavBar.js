@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import {handleLogin} from '../spotify-components/Spotify.jsx'
 
-
-
 import {
   BrowserRouter as Router
 } from "react-router-dom";
@@ -12,6 +10,12 @@ export const NavBar = () => {
 
   const [activeLink, setActiveLink] = useState('home');
   const [scrolled, setScrolled] = useState(false);
+  const [token, setToken] = useState(window.localStorage.getItem("token"))
+
+  useEffect (() => {
+    setToken(window.localStorage.getItem("token"))
+    console.log(token)
+  }, [token])
 
   useEffect(() => {
     const onScroll = () => {
@@ -31,6 +35,11 @@ export const NavBar = () => {
     setActiveLink(value);
   }
 
+  function logout() {
+     window.localStorage.removeItem("token")
+     setToken("")
+  }
+
   return (
     <Router>
       <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
@@ -48,7 +57,10 @@ export const NavBar = () => {
               <Nav.Link href="#reviews" className={activeLink === 'reviews' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('reviews')}>Reviews</Nav.Link>
             </Nav>
             <span className="navbar-text">
+
+                 {!token ? 
                 <button className="vvd" onClick={handleLogin}><span>Login</span></button>
+                : <button onClick={logout}> Logout </button> }
             </span>
           </Navbar.Collapse>
         </Container>
