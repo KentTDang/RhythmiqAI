@@ -1,12 +1,5 @@
 
 import {useEffect, useState} from 'react'
-import SearchBar from './SearchBar'
-
-
-
-
-
-
 import React from 'react'
 
 export default function Spotify() {
@@ -44,7 +37,6 @@ export const spotifyCredentials = {
     AUTH_ENDPOINT: "https://accounts.spotify.com/authorize",
     RESPONSE_TYPE: "token"
 }
-
 
 
 export function handleLogin() {

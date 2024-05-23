@@ -173,6 +173,11 @@
     background-color: transparent;
     transition: 0.3s ease-in-out;
   }
+
+  #songlist {
+    color:white;
+    cursor:pointer;
+  }
   
   .navbar-text button {
     font-weight: 700;
