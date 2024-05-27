@@ -6,6 +6,7 @@ import ReviewTable from './Components/review/ReviewTable.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Spotify from './spotify-components/Spotify.jsx'
 import SpotifyGetNewReleases from './spotify-components/SpotifyGetNewReleases.jsx';
+import SpotifyGetRecommendations from './spotify-components/SpotifyGetRecommendations.jsx';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Song/>
       <ReviewTable />
       <SpotifyGetNewReleases />
+      <SpotifyGetRecommendations />
     </div>
   );
 }
