@@ -5,7 +5,7 @@ import { Song } from "./Components/Song.js";
 import ReviewTable from './Components/review/ReviewTable.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Spotify from './spotify-components/Spotify.jsx'
-import SpotifyGetPlaylist from './spotify-components/SpotifyGetPlaylist.jsx';
+import SpotifyGetNewReleases from './spotify-components/SpotifyGetNewReleases.jsx';
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
       <Banner/>
       <Song/>
       <ReviewTable />
-      <SpotifyGetPlaylist />
+      <SpotifyGetNewReleases />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 
-export default function SpotifyGetPlaylist() {
+export default function SpotifyGetNewReleases() {
 
   const NEW_RELEASES_ENDPOINT = "https://api.spotify.com/v1/browse/new-releases";
   const [token, setToken]= useState("");
@@ -15,16 +15,15 @@ export default function SpotifyGetPlaylist() {
     }
   },[])
 
-  const handleGetNewReleases = () => {
+  const handleGetNewReleases = async() => {
     try {
-        axios.get(NEW_RELEASES_ENDPOINT, {
+        const response = await axios.get(NEW_RELEASES_ENDPOINT, {
             headers : {
                 Authorization: `Bearer ${token}`,
             },
-            params: {
-
-            }
-        });    
+        });
+        console.log(response.data);
+        setData(response.data);
     } catch(error) {
         console.error("Failed fetching new releases: ", error);
     }
@@ -32,6 +31,10 @@ export default function SpotifyGetPlaylist() {
   }
 
   return (
+  <>
   <button onClick={handleGetNewReleases}>Get New Releases</button>
+  {data?.albums?.items ? data.albums.items.map((item) => <p key={item.id}>{item.name}</p>) : null}
+  </>
+  
   );
 }
