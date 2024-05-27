@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import {handleLogin} from '../spotify-components/Spotify.jsx'
+import SearchBar from '../spotify-components/SearchBar.jsx'
+
 
 import {
   BrowserRouter as Router
@@ -11,6 +13,7 @@ export const NavBar = () => {
   const [activeLink, setActiveLink] = useState('home');
   const [scrolled, setScrolled] = useState(false);
   const [token, setToken] = useState(window.localStorage.getItem("token"))
+
 
   useEffect (() => {
     setToken(window.localStorage.getItem("token"))
@@ -40,12 +43,16 @@ export const NavBar = () => {
      setToken("")
   }
 
+
+
   return (
     <Router>
       <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
         <Container>
-          <Navbar.Brand href="/">
-            {/* Search bar goes here */}
+          <Navbar.Brand>
+            <div>
+            <SearchBar/>
+            </div>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav">
             <span className="navbar-toggler-icon"></span>
