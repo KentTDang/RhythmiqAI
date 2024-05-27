@@ -5,6 +5,7 @@ import { faXmark, faPlus, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { addDoc, collection } from "firebase/firestore";
 import { firestore } from "../../Configs/firebase";
+import { Overlay } from "react-bootstrap";
 
 export default function ReviewForm() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -33,6 +34,9 @@ export default function ReviewForm() {
       background: "transparent",
       border: "none",
     },
+    overlay: {
+      zIndex: 10000
+    }
   };
 
   const handleSave = async (e) => {
