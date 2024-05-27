@@ -48,7 +48,6 @@ input {
 .review-header {
     font-size: 45px;
     font-weight: 700;
-    padding-bottom: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,7 +62,11 @@ input {
 }
 
 .add-review-btn {
-    background-color: #fff;
+    background-color: var(--dark-purple);
+    color: white;
+    width: 1.65rem;
+    height: 1.65rem;
+    border-radius: 3px;
 }
 
 .button-main {
@@ -132,7 +135,6 @@ input {
 
 .utility {
     display: flex;
-    /* padding: 6px; */
 }
 
 input[type=radio] {
