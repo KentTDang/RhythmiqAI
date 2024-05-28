@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import {handleLogin} from '../spotify-components/Spotify.jsx'
-import SearchBar from '../spotify-components/SearchBar.jsx'
+import {handleLogin} from './spotify/Spotify.jsx'
+import SearchBar from './spotify/SearchBar.jsx'
 
 
 import {

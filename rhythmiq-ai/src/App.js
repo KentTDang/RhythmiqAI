@@ -4,9 +4,9 @@ import { Banner } from "./Components/Banner.js";
 import { Song } from "./Components/Song.js";
 import ReviewTable from './Components/review/ReviewTable.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Spotify from './spotify-components/Spotify.jsx'
-import SpotifyGetNewReleases from './spotify-components/SpotifyGetNewReleases.jsx';
-import SpotifyGetRecommendations from './spotify-components/SpotifyGetRecommendations.jsx';
+import Spotify from './Components/spotify/Spotify.jsx'
+import SpotifyGetNewReleases from './Components/spotify/SpotifyGetNewReleases.jsx';
+import SpotifyGetRecommendations from './Components/spotify/SpotifyGetRecommendations.jsx';
 
 
 function App() {
