@@ -1,12 +1,10 @@
-
+import React, {useEffect, useState} from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { useEffect, useState } from 'react'
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules'
-import headerImg from './../Assets/img/header-img.svg'
 import axios from 'axios'
 import { Row, Container, Col } from 'react-bootstrap'
 
@@ -40,26 +38,7 @@ export const Song = () => {
 
   }, [change])
 
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1
-    }
-  };
-
+  
 
 
   return (
@@ -69,7 +48,7 @@ export const Song = () => {
           <Col>
             <div className="song-bx">
               <h2>Trending Songs</h2>
-              <p>FAT FAT FAT FAT FATFA FATFTGSYTBXUBWUYBXU</p>
+              <p>Top 100 Songs</p>
               <Swiper
                 effect={"coverflow"}
                 grabCursor={true}
@@ -93,7 +72,7 @@ export const Song = () => {
               className='swiper_container'>
 
               {trendingSongs.map((song) => (
-                <SwiperSlide>
+                <SwiperSlide key={song.id}>
                   <img src={song.track.album.images[0].url} alt="slide_image"/>
              
                 </SwiperSlide>
