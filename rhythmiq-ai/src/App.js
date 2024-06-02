@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import { NavBar } from "./Components/NavBar.js";
 import { Banner } from "./Components/Banner.js";

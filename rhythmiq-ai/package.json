@@ -38,7 +38,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "node ai.js",
-    "lint": "eslint . --fix",
+    "lint": "eslint .",
     "prettier": "prettier --write"
   },
   "eslintConfig": {
