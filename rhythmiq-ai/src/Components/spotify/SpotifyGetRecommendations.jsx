@@ -6,15 +6,16 @@ const useStyles = createUseStyles ({
   dataList: {
     listStyleType: "square",
     padding: 10,
+    display: "flex",
   },
   dataListItems: {
     "& > img": {
-      width: 35,
-      height: 35,
+      width: 150,
+      height: 150,
     },
-    display: "flex",
     gap: 10,
     padding: 5,
+    fontSize: 14,
   }
 })
 export default function SpotifyGetRecommendations() {
@@ -50,15 +51,15 @@ export default function SpotifyGetRecommendations() {
   return (
   <>
   <button onClick={handleGetRecommendations}>Get Recommendations</button>
-  <ul className={styles.dataList}>
+  <div className={styles.dataList}>
     {data.map((song) => (
-      <li className={styles.dataListItems}>
-        <img src={song.album.images[0].url} />
-      <p>{song.name} - {song.artists[0].name}</p>
-      </li>
+      <div className={styles.dataListItems}>
+      <button><img src={song.album.images[0].url} /></button>
+      <p>{song.name}</p>
+      <p>{song.artists[0].name}</p>
+      </div>
     ))}
-    <li></li>
-  </ul>
+  </div>
   </>
   
   );
