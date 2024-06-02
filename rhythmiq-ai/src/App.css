@@ -505,8 +505,9 @@ section.review {
   color: white;
 }
 
-.search-bar {
-  width: 100%;
+  .search-bar {
+    width: 100%;
+  }
 
   input {
     background-color: transparent;
