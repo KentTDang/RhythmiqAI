@@ -2,30 +2,26 @@ import { useEffect, useState } from "react";
 import React from "react";
 
 export default function Spotify() {
+  const [token, setToken] = useState("");
 
-  
-    const [token, setToken] = useState("")
+  useEffect(() => {
+    const hash = window.location.hash;
+    let token = window.localStorage.getItem("token");
 
-    useEffect(() => {
-        const hash = window.location.hash
-        let token = window.localStorage.getItem("token")
+    if (!token && hash) {
+      token = hash
+        .substring(1)
+        .split("&")
+        .find((elem) => elem.startsWith("access_token"))
+        .split("=")[1];
+      window.localStorage.setItem("token", token);
+      setToken(token);
+    }
 
-        if(!token && hash) {
-            token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
-            window.localStorage.setItem("token", token)
-            setToken(token)
-        }
+    console.log(token);
+  }, []);
 
-        console.log(token)
-    }, [])
-
-    return (
-
-        <div>
-
-        </div>
-    )
-
+  return <div></div>;
 }
 
 export const spotifyCredentials = {
