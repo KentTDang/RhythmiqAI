@@ -25,11 +25,7 @@ export default function Spotify() {
 
         </div>
     )
-
-
 }
-
-
 
 export const spotifyCredentials = {
     CLIENT_ID: process.env.REACT_APP_CLIENT_ID,
