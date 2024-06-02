@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import {create, debounce} from 'lodash'
-import {createUseStyles} from 'react-jss'
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { create, debounce } from "lodash";
+import { createUseStyles } from "react-jss";
 
 var token = window.localStorage.getItem("token");
 
@@ -14,29 +13,28 @@ const searchSongs = async (search) => {
   try {
     const response = await axios.get("https://api.spotify.com/v1/search", {
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
       params: {
         q: search,
         type: "track",
-        limit: 5
-      }
+        limit: 5,
+      },
     });
 
-    return response.data.tracks.items
-
+    return response.data.tracks.items;
   } catch (error) {
     console.error("Error Searching", error);
   }
 };
 
-var debounceSearchSongs = debounce(searchSongs, 300, {maxWait: 400})
+var debounceSearchSongs = debounce(searchSongs, 300, { maxWait: 400 });
 
 const useStyles = createUseStyles({
   searchSongResultList: {
     listStyleType: "square",
     padding: 10,
-  }, 
+  },
   searchSongResultListItem: {
     "& > img": {
       width: 35,
@@ -46,26 +44,21 @@ const useStyles = createUseStyles({
     gap: 10,
     padding: 5,
   },
-
-
-})
-
+});
 
 export default function SearchBar() {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const styles = useStyles()
+  const styles = useStyles();
 
   const handleInputChange = async (event) => {
-     setSearch(event.target.value)
+    setSearch(event.target.value);
   };
 
   useEffect(() => {
-
     debounceSearchSongs(search)?.then((_searchResults) => {
-         setSearchResults(_searchResults)
-     })
-    
+      setSearchResults(_searchResults);
+    });
   }, [search]);
 
   const handleSongSelect = (selectedSong) => {
@@ -82,16 +75,19 @@ export default function SearchBar() {
         type="text"
       />
       {search && (
-        <ul className = {styles.searchSongResultList}>
+        <ul className={styles.searchSongResultList}>
           {searchResults.map((song) => (
-            <li id="songlist" className = {styles.searchSongResultListItem} key={song.id} onClick={() => handleSongSelect(song)}>
-              <img src = {song.album.images[0].url}/> 
-              
-              {song.name} - {song.artists.map((artist) => artist.name).join(', ')}
-
+            <li
+              id="songlist"
+              className={styles.searchSongResultListItem}
+              key={song.id}
+              onClick={() => handleSongSelect(song)}
+            >
+              <img src={song.album.images[0].url} />
+              {song.name} -{" "}
+              {song.artists.map((artist) => artist.name).join(", ")}
             </li>
           ))}
-          
         </ul>
       )}
     </div>

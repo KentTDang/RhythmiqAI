@@ -6,7 +6,7 @@ const useStyles = createUseStyles({
   dataList: {
     listStyleType: "square",
     padding: 10,
-  }, 
+  },
   dataListItem: {
     "& > img": {
       width: 35,
@@ -43,21 +43,19 @@ export default function SpotifyGetNewReleases() {
     }
   };
 
-  
-  const styles = useStyles()
+  const styles = useStyles();
 
   return (
     <>
       <button onClick={handleGetNewReleases}>Get New Releases</button>
       <ul className={styles.dataList}>
-      {data.map((song) => (
-        <li className={styles.dataListItem}>
-          <p key={song.id}>{song.name}</p>
-          <img src={song.images[0].url} />
-        </li>
-      ))}
+        {data.map((song) => (
+          <li className={styles.dataListItem}>
+            <p key={song.id}>{song.name}</p>
+            <img src={song.images[0].url} />
+          </li>
+        ))}
       </ul>
-      
     </>
   );
 }

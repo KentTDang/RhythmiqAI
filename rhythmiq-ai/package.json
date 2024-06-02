@@ -39,7 +39,7 @@
     "eject": "react-scripts eject",
     "dev": "node ai.js",
     "lint": "eslint .",
-    "prettier": "prettier --write"
+    "prettier": "prettier . --write"
   },
   "eslintConfig": {
     "extends": [
