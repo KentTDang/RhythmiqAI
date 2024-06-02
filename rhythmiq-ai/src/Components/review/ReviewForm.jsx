@@ -35,8 +35,8 @@ export default function ReviewForm() {
       border: "none",
     },
     overlay: {
-      zIndex: 10000
-    }
+      zIndex: 10000,
+    },
   };
 
   const handleSave = async (e) => {

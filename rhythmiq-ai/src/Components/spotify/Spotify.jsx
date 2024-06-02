@@ -1,8 +1,8 @@
-
-import {useEffect, useState} from 'react'
-import React from 'react'
+import { useEffect, useState } from "react";
+import React from "react";
 
 export default function Spotify() {
+
   
     const [token, setToken] = useState("")
 
@@ -25,17 +25,16 @@ export default function Spotify() {
 
         </div>
     )
+
 }
 
 export const spotifyCredentials = {
-    CLIENT_ID: process.env.REACT_APP_CLIENT_ID,
-    REDIRECT_URI: "http://localhost:3000",
-    AUTH_ENDPOINT: "https://accounts.spotify.com/authorize",
-    RESPONSE_TYPE: "token"
-}
-
+  CLIENT_ID: process.env.REACT_APP_CLIENT_ID,
+  REDIRECT_URI: "http://localhost:3000",
+  AUTH_ENDPOINT: "https://accounts.spotify.com/authorize",
+  RESPONSE_TYPE: "token",
+};
 
 export function handleLogin() {
-    window.location.href = `${spotifyCredentials.AUTH_ENDPOINT}?client_id=${spotifyCredentials.CLIENT_ID}&redirect_uri=${spotifyCredentials.REDIRECT_URI}&response_type=${spotifyCredentials.RESPONSE_TYPE}`
-  
+  window.location.href = `${spotifyCredentials.AUTH_ENDPOINT}?client_id=${spotifyCredentials.CLIENT_ID}&redirect_uri=${spotifyCredentials.REDIRECT_URI}&response_type=${spotifyCredentials.RESPONSE_TYPE}`;
 }

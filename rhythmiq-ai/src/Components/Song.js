@@ -1,3 +1,4 @@
+
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { useEffect, useState } from 'react'
 import 'swiper/css';
@@ -10,9 +11,8 @@ import axios from 'axios'
 import { Row, Container, Col } from 'react-bootstrap'
 
 
-
-
 export const Song = () => {
+
   var token = window.localStorage.getItem("token")
 
   const [trendingSongs, setTrendingSongs] = useState([])
@@ -60,25 +60,23 @@ export const Song = () => {
     }
   };
 
+
+
   return (
-    <section className='song' id='songs'>
-      
+    <section className="song" id="songs">
       <Container>
         <Row>
           <Col>
             <div className="song-bx">
-              <h2>
-                Trending Songs
-              </h2>
+              <h2>Trending Songs</h2>
               <p>FAT FAT FAT FAT FATFA FATFTGSYTBXUBWUYBXU</p>
-              <Swiper 
-              effect={'coverflow'} 
-              grabCursor={true} 
-              centeredSlides={true} 
-              loop={true} 
-              slidesPerView={'auto'} 
-              coverflowEffect={
-                {
+              <Swiper
+                effect={"coverflow"}
+                grabCursor={true}
+                centeredSlides={true}
+                loop={true}
+                slidesPerView={"auto"}
+                coverflowEffect={{
                   rotate: 0,
                   stretch: 0,
                   depth: 100,
@@ -97,6 +95,7 @@ export const Song = () => {
               {trendingSongs.map((song) => (
                 <SwiperSlide>
                   <img src={song.track.album.images[0].url} alt="slide_image"/>
+             
                 </SwiperSlide>
               ))}
                 
@@ -111,11 +110,10 @@ export const Song = () => {
                   </div>
                 </div>
               </Swiper>
-
             </div>
           </Col>
         </Row>
       </Container>
     </section>
-  )
-}
+  );
+};

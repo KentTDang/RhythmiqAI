@@ -53,7 +53,7 @@ export default function ReviewTable() {
       (error) => {
         setError("Failed to fetch data from Firestore.");
         setLoading(false);
-      }
+      },
     );
 
     return () => unsub();
@@ -85,7 +85,13 @@ export default function ReviewTable() {
   return (
     <>
       <section className="review" id="reviews">
-        <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <div className="review-tool-bar">
             <h2 className="review-header">Reviews</h2>
             <div className="review-tool-bar-actions">
