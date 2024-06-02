@@ -7,12 +7,16 @@ import "swiper/css/navigation";
 import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
 import axios from "axios";
 import { Row, Container, Col } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import { createUseStyles } from "react-jss";
 
 export const Song = () => {
-  var token = window.localStorage.getItem("token");
+  const token = window.localStorage.getItem("token");
 
   const [trendingSongs, setTrendingSongs] = useState([]);
   const [change, setChange] = useState("");
+  const [currentAudio, setCurrentAudio] = useState(null);
 
   const getTrendingSongs = async () => {
     const response = await axios.get(
@@ -21,7 +25,7 @@ export const Song = () => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      },
+      }
     );
     setTrendingSongs(response.data.tracks.items);
     setChange("change");
@@ -34,6 +38,31 @@ export const Song = () => {
     console.log("this is trending songs", trendingSongs);
     console.log("this is token", token);
   }, [change]);
+
+  const useStyles = createUseStyles({
+    playButton: {
+      height: 50,
+      width: 50,
+    },
+    playIcon: {
+      color: "black",
+      height: 40,
+      width: 40,
+      justifyContent: "center",
+    },
+  });
+
+  const styles = useStyles();
+
+  const playAudio = (url) => {
+    if (currentAudio) {
+      currentAudio.pause();
+    }
+    const audio = new Audio(url);
+    audio.play();
+    audio.volume = 0.3;
+    setCurrentAudio(audio);
+  };
 
   return (
     <section className="song" id="songs">
@@ -55,7 +84,7 @@ export const Song = () => {
                   depth: 100,
                   modifier: 2.5,
                 }}
-                paginatio={{ el: ".swiper-pagination", clickable: true }}
+                pagination={{ el: ".swiper-pagination", clickable: true }}
                 navigation={{
                   nextEl: ".swiper-button-next",
                   prevEl: ".swiper-button-prev",
@@ -65,7 +94,13 @@ export const Song = () => {
                 className="swiper_container"
               >
                 {trendingSongs.map((song) => (
-                  <SwiperSlide key={song.id}>
+                  <SwiperSlide key={song.track.id}>
+                    <button
+                      className={styles.playButton}
+                      onClick={() => playAudio(song.track.preview_url)}
+                    >
+                      <FontAwesomeIcon icon={faPlay} className={styles.playIcon} />
+                    </button>
                     <img
                       src={song.track.album.images[0].url}
                       alt="slide_image"
