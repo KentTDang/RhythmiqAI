@@ -26,7 +26,7 @@ export default function Spotify() {
 
 export const spotifyCredentials = {
   CLIENT_ID: process.env.REACT_APP_CLIENT_ID,
-  REDIRECT_URI: "https://rhythmiq-ai.web.app",
+  REDIRECT_URI: "rhythmiq-ai.web.app",
   AUTH_ENDPOINT: "https://accounts.spotify.com/authorize",
   RESPONSE_TYPE: "token",
 };
