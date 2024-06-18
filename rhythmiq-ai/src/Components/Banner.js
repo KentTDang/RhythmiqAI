@@ -9,8 +9,8 @@ export const Banner = () => {
         <Row className="align-items-center">
           <Col xs={12} md={6} xl={7}>
             <span className="tagline">Welcome to Rhythmiq AI</span>
-            <h1>Share Your Music Love for Music With Friends.</h1>
-            <p>WE ARE GOING TO WIN. IN GOD WE TRUST WOOT WOOT WOOT</p>
+            <h1>Find Music Out of This World</h1>
+            <p>Discover a universe of music on our platform, where the thrill of exploration meets the joy of sharing.</p>
           </Col>
           <Col xs={12} md={6} xl={5}>
             <img src={headerImg} alt="Header Img" />

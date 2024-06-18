@@ -18,7 +18,7 @@ export default function Spotify() {
       setToken(token);
     }
 
-    console.log(token);
+    console.log("Token: " + token);
   }, []);
 
   return <div></div>;
@@ -26,7 +26,7 @@ export default function Spotify() {
 
 export const spotifyCredentials = {
   CLIENT_ID: process.env.REACT_APP_CLIENT_ID,
-  REDIRECT_URI: "https://rhythmiq-ai.web.app/",
+  REDIRECT_URI: "http://localhost:3000",
   AUTH_ENDPOINT: "https://accounts.spotify.com/authorize",
   RESPONSE_TYPE: "token",
 };
@@ -34,3 +34,6 @@ export const spotifyCredentials = {
 export function handleLogin() {
   window.location.href = `${spotifyCredentials.AUTH_ENDPOINT}?client_id=${spotifyCredentials.CLIENT_ID}&redirect_uri=${spotifyCredentials.REDIRECT_URI}&response_type=${spotifyCredentials.RESPONSE_TYPE}`;
 }
+
+console.log("Spotify Credential Response Type: " + spotifyCredentials.RESPONSE_TYPE);
+console.log("Spotify Crednetials Client ID: " + spotifyCredentials.CLIENT_ID);
