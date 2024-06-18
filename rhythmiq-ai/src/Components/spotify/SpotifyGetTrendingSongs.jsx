@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { createUseStyles } from "react-jss";
 
-export const Song = () => {
+export default function SpotifyGetTrendingSongs () {
   const token = window.localStorage.getItem("token");
 
   const [trendingSongs, setTrendingSongs] = useState([]);
