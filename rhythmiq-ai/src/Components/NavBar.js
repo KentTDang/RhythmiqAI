@@ -3,8 +3,6 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import { handleLogin } from "./spotify/Spotify.jsx";
 import SearchBar from "./spotify/SearchBar.jsx";
 
-import { BrowserRouter as Router } from "react-router-dom";
-
 export const NavBar = () => {
   const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
@@ -39,7 +37,6 @@ export const NavBar = () => {
   }
 
   return (
-    <Router>
       <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
         <Container>
           <Navbar.Brand>
@@ -94,6 +91,5 @@ export const NavBar = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </Router>
   );
 };
